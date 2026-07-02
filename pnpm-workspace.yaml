@@ -1,0 +1,5 @@
+# Standalone workspace root so this app installs its own deps,
+# isolated from the parent Bookuj.sk Next.js project.
+packages: []
+allowBuilds:
+  esbuild: false
