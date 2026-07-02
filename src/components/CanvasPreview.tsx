@@ -52,7 +52,12 @@ export function CanvasPreview({
 
   useEffect(() => {
     return () => {
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current)
+      if (rafRef.current != null) {
+        cancelAnimationFrame(rafRef.current)
+        // Reset the ref so a remount (e.g. React StrictMode's double-invoke in
+        // dev) can schedule a fresh frame instead of being blocked by the guard.
+        rafRef.current = null
+      }
     }
   }, [])
 
